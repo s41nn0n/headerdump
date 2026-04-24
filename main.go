@@ -196,12 +196,23 @@ func negotiateFormat(r *http.Request) string {
 	}
 
 	accept := strings.ToLower(r.Header.Get("Accept"))
+	if accept == "" {
+		return "html"
+	}
+
+	hasHTML := strings.Contains(accept, "text/html") || strings.Contains(accept, "application/xhtml+xml")
+	hasJSON := strings.Contains(accept, "application/json")
+	hasXML := strings.Contains(accept, "application/xml") || strings.Contains(accept, "text/xml")
+	hasText := strings.Contains(accept, "text/plain")
+
 	switch {
-	case strings.Contains(accept, "application/json"):
+	case hasHTML:
+		return "html"
+	case hasJSON:
 		return "json"
-	case strings.Contains(accept, "application/xml"), strings.Contains(accept, "text/xml"):
+	case hasXML:
 		return "xml"
-	case strings.Contains(accept, "text/plain"):
+	case hasText:
 		return "text"
 	default:
 		return "html"
