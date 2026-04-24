@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  test-web:
-    image: ghcr.io/s41nn0n/test-web:latest
+  headerdump:
+    image: ghcr.io/s41nn0n/headerdump:latest
     restart: unless-stopped
     environment:
       - PORT=8080

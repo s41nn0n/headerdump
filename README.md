@@ -78,7 +78,7 @@ docker compose up -d
 That compose file pulls:
 
 ```text
-ghcr.io/s41nn0n/test-web:latest
+ghcr.io/s41nn0n/headerdump:latest
 ```
 
 ## GitHub Actions container build
